@@ -10,7 +10,7 @@ contract Template {
         require(msg.sender == admin, "Not an Admin account!");
         _;
     }
-    
+
     // fallback() external {
     //     revert("Function does not exist!");
     // }
@@ -22,7 +22,7 @@ contract Template {
         admin = _admin;
     }
 
-    function storeSbomUrl(string memory url) external onlyAdmin{
+    function storeSbomUrl(string memory url) external onlyAdmin {
         SBOM_URL = url;
     }
 

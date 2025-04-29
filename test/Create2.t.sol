@@ -110,8 +110,12 @@ contract Create2Test is Test {
         // template.initialise(dev);
         // (bool initialised,) = proxy.call(abi.encodeWithSignature("initialise(address)", dev));
         // assertEq(initialised, true, "Initialise failed!");
-
+        
         // Store the SBOM URL
+
+        bytes32 commitment = keccak256(abi.encodePacked(dev, salt));
+        factory.createCommitment(salt, commitment);
+
         vm.prank(dev);
         (bool success,) = proxy.call(abi.encodeWithSignature("storeSbomUrl(string)", "https://example.com/sbom"));
         assertEq(success, true, "Store SBOM URL failed!");
